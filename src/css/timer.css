@@ -1,0 +1,28 @@
+
+#datetime-picker {
+    margin-top: 48px;
+}
+
+.timer {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    justify-content: center; 
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.value {
+    font-size: 40px;
+    font-weight: 600;
+    
+}
+
+.label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
