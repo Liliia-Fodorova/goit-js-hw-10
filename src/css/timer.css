@@ -12,11 +12,7 @@ button {
     padding: 12px 24px;
     font-size: 18px;
     border-radius: 12px;
-    border: none;
-    background-color: #854cc6;
-    color: rgb(215, 210, 210);
-    cursor: pointer;
-    transition: background-color 0.2s;
+    background-color: #80a5e0;
 }
 
 .timer {
