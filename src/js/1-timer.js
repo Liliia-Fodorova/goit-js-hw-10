@@ -41,6 +41,7 @@ flatpickr(input, {
 
 startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
+  input.disabled = true;
 
   timerId = setInterval(() => {
     const diff = selectedDate - new Date();
@@ -48,6 +49,8 @@ startBtn.addEventListener('click', () => {
     if (diff <= 0) {
       clearInterval(timerId);
       updateTimer(0);
+      input.disabled = false;
+      startBtn.disabled = true;
       return;
     }
 
