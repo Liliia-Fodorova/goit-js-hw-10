@@ -1,2 +1,2 @@
-import"./assets/styles-DD3qoKza.js";console.log("TIMER");
+import"./assets/styles-DD3qoKza.js";import{f as o,i as r}from"./assets/vendor-BbSUbo7J.js";console.log("TIMER");const e=document.querySelector("[data-start]"),s=document.querySelector("#datetime-picker");document.querySelector("[data-days]");document.querySelector("[data-hours]");document.querySelector("[data-minutes]");document.querySelector("[data-seconds]");let t=null;e.disable=!0;o(s,{enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(a){t=a[0],t<=new Date?(e.disable=!0,r.error({maessage:"Please choose a date in the future",position:"topRight"})):e.disable=!1}});
 //# sourceMappingURL=1-timer.js.map
