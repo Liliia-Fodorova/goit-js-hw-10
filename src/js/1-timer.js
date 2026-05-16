@@ -16,7 +16,7 @@ const secondsEl = document.querySelector('[data-seconds]');
 let selectedDate = null;
 let timerId = null;
 
-startBtn.disable = true;
+startBtn.disabled = true;
 
 flatpickr(input, {
     enableTime: true,
@@ -27,14 +27,56 @@ flatpickr(input, {
     onClose(selectedDates) {
         selectedDate = selectedDates[0];
         if (selectedDate <= new Date()) {
-            startBtn.disable = true;
+            startBtn.disabled = true;
             iziToast.error({
-                maessage: "Please choose a date in the future",
+                message: "Please choose a date in the future",
                 position: 'topRight',
             });
         } else {
-            startBtn.disable = false;
+            startBtn.disabled = false;
         }
     },
 });
+startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    input.disabled = true;
 
+    timerId = setInterval(() => {
+        const diff = selectedDate - new Date();
+        if (diff <= 0) {
+            clearInterval(timerId);
+            updateTimer(0);
+            input.disabled = false;
+            startBtn.disable = true;
+            return;
+        }
+        updateTimer(diff);
+    }, 1000);
+});
+function updateTimer(ms) {
+    const { days, hours, minutes, seconds } = convertMs(ms);
+
+    daysEl.textContent = addLeadingZero(days);
+    hoursEl.textContent = addLeadingZero(hours);
+    minutesEl.textContent = addLeadingZero(minutes);
+    secondsEl.textContent = addLeadingZero(seconds);
+}
+
+function addLeadingZero(value) {
+    return String(value).padStart(2, '0');
+}
+
+function convertMs(ms) {
+  
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+    
+ return {
+    days: Math.floor(ms / day),
+    hours: Math.floor((ms % day) / hour),
+    minutes: Math.floor((ms % hour) / minute),
+    seconds: Math.floor((ms % minute) / second),
+  };
+}   
